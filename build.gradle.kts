@@ -1,11 +1,15 @@
 plugins {
   id("java")
-  id("org.jetbrains.kotlin.jvm") version "1.9.25"
-  id("org.jetbrains.intellij.platform") version "2.3.0"
+  id("org.jetbrains.kotlin.jvm") version "2.1.21"
+  id("org.jetbrains.intellij.platform") version "2.6.0"
 }
 
 group = "com.github.ivw"
-version = "1.0-SNAPSHOT"
+version = "1.0"
+
+kotlin {
+  jvmToolchain(21)
+}
 
 repositories {
   mavenCentral()
@@ -36,15 +40,10 @@ intellijPlatform {
       Initial version
     """.trimIndent()
   }
-}
 
-tasks {
-  // Set the JVM compatibility versions
-  withType<JavaCompile> {
-    sourceCompatibility = "21"
-    targetCompatibility = "21"
-  }
-  withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions.jvmTarget = "21"
+  pluginVerification {
+    ides {
+      recommended()
+    }
   }
 }
