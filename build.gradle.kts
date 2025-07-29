@@ -8,7 +8,7 @@ group = "com.github.ivw"
 version = "1.0"
 
 kotlin {
-  jvmToolchain(21)
+  jvmToolchain(17)
 }
 
 repositories {
